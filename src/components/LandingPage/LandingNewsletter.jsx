@@ -1,50 +1,42 @@
-"use client"
+'use client'; // Ensure this is a client-side component
 
 import React, { useState } from 'react';
-import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, push } from 'firebase/database';
-
-// Firebase configuration for Realtime Database URL
-const firebaseConfig = {
-  apiKey: "AIzaSyDZRK3pQeYMQBx9yT4fPU_Lwjl8V67TtVs",
-  authDomain: "bioscholar-auth.firebaseapp.com",
-  databaseURL: "https://bioscholar-data-default-rtdb.firebaseio.com/", // Specify your database URL here
-  projectId: "bioscholar-auth",
-  storageBucket: "bioscholar-auth.appspot.com",
-  messagingSenderId: "1015150112218",
-  appId: "1:1015150112218:web:aa2751b9d78ea6ae0324e3",
-  measurementId: "G-8LR2YCHQ7F"
-};
-
-// Initialize Firebase app and database
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app); // Initialize Realtime Database
 
 export const LandingNewsletter = () => {
   const [email, setEmail] = useState('');
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleInputChange = (e) => {
+    setEmail(e.target.value);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!email) {
-      setError('Please enter a valid email');
+      setMessage("Please enter an email address.");
       return;
     }
 
     try {
-      // Push the email to the Firebase Realtime Database
-      const emailRef = ref(database, 'newsletter-emails'); // Use 'newsletter-emails' node
-      await push(emailRef, {
-        email: email,
-        subscribedAt: new Date().toISOString(),
+      // Send the email to Firebase Realtime Database
+      const response = await fetch('https://bioscholar-data-default-rtdb.firebaseio.com/newsletterSubscriptions.json', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
       });
-      setSuccess(true);
-      setError('');
-      setEmail(''); // Clear the input after successful submission
-    } catch (err) {
-      setError('Error saving email. Please try again.');
-      setSuccess(false);
+
+      if (response.ok) {
+        setMessage("Thank you for subscribing to our newsletter!");
+        setEmail(''); // Clear the input field
+      } else {
+        setMessage("Error subscribing. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Error submitting the form:", error);
+      setMessage("Error submitting the form. Please try again later.");
     }
   };
 
@@ -57,16 +49,18 @@ export const LandingNewsletter = () => {
         </div>
         <form className='landing-newsletter-input' onSubmit={handleSubmit}>
           <input
-            type='email'
+            type="email"
             placeholder='Enter your email ID'
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleInputChange}
+            required
           />
-          <button type='submit'>Submit</button>
+          <button type="submit">Submit</button>
         </form>
-        {success && <p>Thank you for subscribing!</p>}
-        {error && <p className='error'>{error}</p>}
+        {message && <p>{message}</p>} {/* Display success/error message */}
       </div>
     </div>
   );
 };
+
+export default LandingNewsletter;
