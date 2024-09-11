@@ -127,7 +127,7 @@
 // export default Signup;
 
 'use client';
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import '@styles/Auth/Signup/Signup.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
@@ -157,9 +157,23 @@ const Signup = () => {
 
     const router = useRouter();
 
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                router.push('/');
+            }
+        });
+        return () => unsubscribe();
+    }, [router]);
+
     const validateEmail = (value) => {
         if (!validator.validate(value)) {
             return "Please enter a valid email address.";
+        }
+
+         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailRegex.test(value)) {
+            return "Please enter a proper email address.";
         }
         return '';
     };
@@ -168,6 +182,8 @@ const Signup = () => {
         if (value.length < 8) {
             return "Password should be at least 8 characters long.";
         }
+
+       
         return '';
     };
 
@@ -195,15 +211,21 @@ const Signup = () => {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
 
-            const userRef = ref(database, 'usersData/' + user.uid);
+            // Reference to the Firebase Realtime Database URL
+            const userRef = ref(database, `usersData/${user.uid}`);
             await set(userRef, {
-                uid: user.uid,
-                email: user.email,
-                firstName: email.split('@')[0],
+              uid: user.uid,
+              email: user.email,
+              firstName,
+              lastName,
+              institution,
+              city,
+              state,
+              country,
             });
 
             console.log('User data saved successfully');
-            router.back();
+            router.push('/');
         } catch (error) {
             if (error.code === 'auth/email-already-in-use') {
                 setGeneralError('An account with this email already exists. Please log in.');
@@ -212,9 +234,6 @@ const Signup = () => {
             }
             console.error('Error during signup:', error);
         }
-
-        console.log("Form submitted:", { firstName, lastName, institution, city, state, country, email, password });
-        router.back();
     };
 
     const togglePasswordVisibility = () => {
@@ -227,7 +246,7 @@ const Signup = () => {
             const result = await signInWithPopup(auth, provider);
             const user = result.user;
 
-            const userRef = ref(database, 'usersData/' + user.uid);
+            const userRef = ref(database, `usersData/${user.uid}`);
             await set(userRef, {
                 uid: user.uid,
                 email: user.email,
@@ -235,13 +254,9 @@ const Signup = () => {
             });
 
             console.log('Google Sign-In successful and user data stored:', user);
-            router.back();
+            router.push('/');
         } catch (error) {
-            if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
-                setGeneralError("Email or password is incorrect. Please try again.");
-            } else {
-                setGeneralError("An error occurred. Please try again.");
-            }
+            setGeneralError('An error occurred. Please try again.');
             console.error('Google Sign-In error:', error);
         }
     };
