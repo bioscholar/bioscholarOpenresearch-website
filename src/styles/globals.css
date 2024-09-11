@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --bio-cta:#7E66F4;
+  --bio-purple-bg:#F1F2FF;
+  --bio-white:#ffffff;
+  --bio-black:#1d1d1d;
+  --h-font:'Poppins';
+  --p-font:'Lato';
+  --h-black:#000000;
+  --p-black:#0A0A0A;
+  --h-white:#ffffff;
+  --p-white:#d1d1d1;
+
+}
+
+*{
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  overflow-y: scroll;
+}
