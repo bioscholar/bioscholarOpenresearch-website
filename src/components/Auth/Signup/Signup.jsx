@@ -221,6 +221,31 @@ const Signup = () => {
         setShowPassword(!showPassword);
     };
 
+    const handleGoogleSignIn = async () => {
+        try {
+            const provider = new GoogleAuthProvider();
+            const result = await signInWithPopup(auth, provider);
+            const user = result.user;
+
+            const userRef = ref(database, 'usersData/' + user.uid);
+            await set(userRef, {
+                uid: user.uid,
+                email: user.email,
+                firstName: user.email.split('@')[0],
+            });
+
+            console.log('Google Sign-In successful and user data stored:', user);
+            router.back();
+        } catch (error) {
+            if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+                setGeneralError("Email or password is incorrect. Please try again.");
+            } else {
+                setGeneralError("An error occurred. Please try again.");
+            }
+            console.error('Google Sign-In error:', error);
+        }
+    };
+
     return (
         <div className="signup">
             <div className="signup-container">
@@ -325,7 +350,7 @@ const Signup = () => {
                         <button className="signup-btn" type="submit">Sign Up</button>
                     </div>
                     <div className="google-signin">
-                        <button type="button" className="Signin-with-google-btn">Signin with Google</button>
+                        <button type="button" className="Signin-with-google-btn"  onClick={handleGoogleSignIn}>Signin with Google</button>
                     </div>
                     <div className="signup-terms-content">
                         <p className="signup-terms">
