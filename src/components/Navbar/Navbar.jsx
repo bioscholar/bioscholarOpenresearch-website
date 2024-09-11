@@ -23,8 +23,7 @@ const Navbar = () => {
                 <button className='navbar-top-button'>SUBMIT YOUR RESEARCH</button>
 
                 <div className='navbar-hamburger-img'>
-                {!menuOpen ? <Image src={hamburger} onClick={handleMenuClick}/> : <Image src={close} onClick={handleMenuClick} />}
-
+                   {!menuOpen ? <Image src={hamburger} onClick={handleMenuClick}/> : <Image src={close} onClick={handleMenuClick} />}
                 </div>
 
               {menuOpen &&  
@@ -37,7 +36,7 @@ const Navbar = () => {
                     </div>
 
                     <div className='navbar-bottom-button'>
-                        <p>SIGNUP</p>
+                        <Link href="/signup"> <p>SIGNUP</p></Link>
                     </div>
 
                     <button>SUBMIT YOUR RESEARCH</button>
@@ -53,7 +52,7 @@ const Navbar = () => {
                     <p>CONTACT</p>
                 </div>
                 <div className='navbar-bottom-button'>
-                       <p>SIGNUP</p>
+                <Link href="/signup">  <p>SIGNUP</p></Link>
                 </div>
             </div>
         </div>

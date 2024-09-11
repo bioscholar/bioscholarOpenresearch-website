@@ -324,6 +324,9 @@ const Signup = () => {
                     <div className="signup-button">
                         <button className="signup-btn" type="submit">Sign Up</button>
                     </div>
+                    <div className="google-signin">
+                        <button type="button" className="Signin-with-google-btn">Signin with Google</button>
+                    </div>
                     <div className="signup-terms-content">
                         <p className="signup-terms">
                             By signing up, you agree to our <Link href="/terms-of-service" className="underline">Terms of Services</Link> and <Link href="/privacy-policy" className="underline">Privacy Policy</Link>.
