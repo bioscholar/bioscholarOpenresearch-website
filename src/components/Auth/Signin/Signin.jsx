@@ -7,6 +7,9 @@ import Link from "next/link"; // Importing Link from Next.js for navigation
 import { useRouter } from 'next/navigation'; // Importing useRouter for navigation
 import Box from '@mui/material/Box'; // Importing Box component from Material UI
 import TextField from '@mui/material/TextField'; // Importing TextField component from Material UI
+import { GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { ref, set } from 'firebase/database';
+import { auth, database } from '@firebase';
 
 const Signin = () => {
     const [email, setEmail] = useState('');
@@ -67,6 +70,33 @@ const Signin = () => {
         setShowPassword(!showPassword);
     };
 
+    const handleGoogleSignIn = async () => {
+        try {
+            const provider = new GoogleAuthProvider();
+            const result = await signInWithPopup(auth, provider);
+            const user = result.user;
+
+            // Store user data in Firebase Realtime Database
+            const userRef = ref(database, 'usersData/' + user.uid);
+            await set(userRef, {
+                uid: user.uid,
+                email: user.email,
+                firstName: user.email.split('@')[0],
+            });
+
+
+            router.back();
+
+        } catch (err) {
+            if (err.code === 'auth/cancelled-popup-request') {
+                setGeneralError('Unable to get profile information from Google.');
+            } else if (err.code !== 'auth/popup-closed-by-user') {
+                setGeneralError(err.message);
+            }
+        }
+    };
+
+
     return (
         <div className="Signin">
             <div className="Signin-container">
@@ -117,7 +147,7 @@ const Signin = () => {
                     </div>
 
                     <div className="google-signin">
-                        <button type="button" className="Signin-with-google-btn">Signin with Google</button>
+                        <button type="button" className="Signin-with-google-btn" onClick={handleGoogleSignIn}>Signin with Google</button>
                         <p >Don't have an account? <Link href="/signup">Sign up</Link></p>
                     </div>
                 </form>

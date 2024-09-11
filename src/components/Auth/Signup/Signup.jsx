@@ -136,6 +136,9 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import validator from 'email-validator';
 import { useRouter } from 'next/navigation';
+import { GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, fetchSignInMethodsForEmail, onAuthStateChanged } from "firebase/auth";
+import { ref, set } from 'firebase/database';
+import { auth, database } from '@firebase'; 
 
 const Signup = () => {
     const [email, setEmail] = useState('');
@@ -168,7 +171,7 @@ const Signup = () => {
         return '';
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setGeneralError('');
         setEmailError('');
@@ -181,6 +184,33 @@ const Signup = () => {
             setEmailError(emailErrorMessage);
             setPasswordError(passwordErrorMessage);
             return;
+        }
+        // const emailExists = await checkEmailExists(email);
+        // if (emailExists) {
+        //     setGeneralError('An account with this email already exists. Please log in.');
+        //     return;
+        // }
+
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+
+            const userRef = ref(database, 'usersData/' + user.uid);
+            await set(userRef, {
+                uid: user.uid,
+                email: user.email,
+                firstName: email.split('@')[0],
+            });
+
+            console.log('User data saved successfully');
+            router.back();
+        } catch (error) {
+            if (error.code === 'auth/email-already-in-use') {
+                setGeneralError('An account with this email already exists. Please log in.');
+            } else {
+                setGeneralError('An error occurred. Please try again.');
+            }
+            console.error('Error during signup:', error);
         }
 
         console.log("Form submitted:", { firstName, lastName, institution, city, state, country, email, password });
