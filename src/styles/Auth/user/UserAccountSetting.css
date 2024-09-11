@@ -1,0 +1,239 @@
+
+.profile-contents , .security-contents, .privacy-contents, .notification-contents, .logout-contents{
+    width: 100%;
+    border-radius: 16px;
+    padding: 40px 0px;
+    }
+    .profile-form , .security-form, .privacy-form, .notification-form, .logout-form{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        gap:1.5rem;
+        align-items: flex-start;
+    }
+    .profile-contents h2, .security-contents h2{
+        font-size: 24px;
+        font-family: var(--h-font);
+        font-weight: 600;
+        color:var(--h-black);
+        line-height:150%;
+        padding-bottom:1rem;
+    }
+    .security-form p{
+        font-size: 16px;
+        font-family: var(--p-font);
+        font-weight: 400;
+        color: var(--p-black);
+        line-height:150%;
+    }
+    .security-contents-container{
+        width: max-content;
+    }
+    .Fname, .Lname, .Pemail, .Phone, .Country, .Ppassword{
+        display: flex;
+        flex-direction: column;
+        gap:0.4rem;
+        width: 75%;
+    }
+    .save-button{
+        width: 75%;
+        display: flex;
+        justify-content: flex-start;
+    }
+    .change-password, .save-changes{
+        width: max-content;
+        padding: 8px 16px;
+        border: 2px solid #121212;
+        border-radius: 8px;
+        background-color: #121212;
+        color:#f8f8ff;
+        font-size: 14px;
+        font-family: 'Roboto', sans-serif;
+        
+    }
+    .change-password:hover, .save-changes:hover{
+        background-color: #f8f8ff;
+        color:#121212;
+        font-weight: 500;
+    }
+    .profile-form input, .security-form input{
+        height: 40px;
+        padding: 8px;
+        border: 1px solid #CACED8;
+        border-radius: 8px;
+        background-color: #ffffff;
+        color: var(--h-black);
+    
+    }
+    .profile-form label , .security-form label{
+        font-size: 14px;
+        font-weight: 400;
+        font-family: 'Roboto', sans-serif;
+        color: #121212;
+    }
+    .choose-pic{
+        display: none;
+    }
+    
+    .profile-contents {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+    }
+    
+    .profile-pic-wrapper {
+        position: relative;
+        margin-bottom: 8px;
+        width: 75%;
+    }
+    
+    .profile-pic {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #e5e5e5;
+    }
+    
+    .profile-pic-upload {
+        position: absolute;
+        bottom: 0;
+        left: 70px;
+        background: #fff;
+        border-radius: 50%;
+        padding: 10px;
+        cursor: pointer;
+        border: 2px solid #e5e5e5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .profile-pic-upload input {
+        display: none;
+    }
+    
+    .profile-pic-upload:hover {
+        background: #f0f0f0;
+    }
+    
+    
+    .save-changes {
+        padding: 6px 16px;
+        font-size: 16px;
+        color: #fff;
+        background-color: var(--trafy-black);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        border: 2px solid var(--trafy-black);
+    }
+    
+    .save-changes:hover{
+        background-color: inherit;
+        color: var(--h-black);
+    }
+
+    .popup {
+        width:350px;
+        position: fixed;
+        top: 70px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #353535;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 1000;
+        display:flex;
+        gap:1rem;
+    }
+    .popup span{
+        font-family:var(--p-font);
+        font-size:14px;
+        font-weight:400;
+        line-height:150%;
+        color:white;
+    }
+    .close-popup {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    
+    @media only screen and (max-width:1024px){
+        .profile-contents , .security-contents, .privacy-contents, .notification-contents, .logout-contents{
+           display: flex;
+           justify-content: center;
+            align-items: center;
+        }
+        .profile-form,  .privacy-form, .notification-form, .logout-form{
+            align-items: center;
+        }
+    }
+    @media only screen and (max-width:600px){
+        .profile-contents , .security-contents, .privacy-contents, .notification-contents, .logout-contents{
+            padding:0px;
+        }
+        .profile-form , .security-form, .privacy-form, .notification-form, .logout-form{
+            width:90%;
+            align-items: flex-start;
+        }
+        .profile-contents h2, .security-contents h2{
+            padding-bottom:0px;
+        }
+
+
+        .profile-pen{
+            display: none;
+        }
+        .choose-pic{
+            display: block;
+        }
+        .profile-pic-wrapper{
+            display: flex;
+            flex-direction: column;
+            gap:1rem;
+        }
+        .profile-form label, .security-form label{
+            position: initial;
+            border: 0;
+            border-radius: 0;
+            padding:0;
+            width: max-content;
+
+        }
+        .profile-form label:hover{
+            background-color: inherit;
+        }
+        .choose-pic {
+            font-size: 14px;
+            font-family: var(--p-font);
+            font-weight: 500;
+            color: #6334da;
+        }
+        .choose-pic:hover{
+            color: #4800ff;
+        }
+        .user-settings-dashboard{
+        border: 0px;
+    }
+    .Fname, .Lname, .Pemail, .Phone, .Country, .Ppassword{
+        width: 100%;
+    }
+    .save-button{
+        width: 100%;
+    }
+    .popup{
+        width:80%;
+        left:55%;
+        top:60px;
+    }
+    }
