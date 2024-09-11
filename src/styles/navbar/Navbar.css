@@ -43,6 +43,9 @@
 .navbar-top-button:hover{
     background-color: #6d57d9;
 }
+.navbar-menu{
+    display: none;
+}
 .navbar-bottom{
     display: flex;
     justify-content: space-between;
@@ -101,11 +104,12 @@
         display: flex;
         flex-direction: column;
         gap: 24px;
-        top: 45px;
+        top: 49px;
         padding: 24px 32px ;
-        right: -45px;
+        right: -50px;
         background-color: var(--bio-purple-bg);
         height: 100vh;
+        border-left: 1px solid #e5e5e5;
     }
     .navbar-bottom{
         display: none;
@@ -121,4 +125,20 @@
         border-bottom: 1px solid #e5e5e5;
     }
 
+}
+@media only screen and (max-width:600px){
+    .navbar-menu{
+        right: -30px;
+    }
+}
+@media only screen and (max-width:400px){
+    .navbar-menu{
+        width: 102vw;
+        right: 0px;
+        left:-20px;
+    }
+    .navbar-top button{
+        width: 100%;
+        text-align: center;
+    }
 }
