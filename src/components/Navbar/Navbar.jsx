@@ -23,8 +23,7 @@ const Navbar = () => {
                 <button className='navbar-top-button'>SUBMIT YOUR RESEARCH</button>
 
                 <div className='navbar-hamburger-img'>
-                {!menuOpen ? <Image src={hamburger} onClick={handleMenuClick}/> : <Image src={close} onClick={handleMenuClick} />}
-
+                   {!menuOpen ? <Image src={hamburger} onClick={handleMenuClick}/> : <Image src={close} onClick={handleMenuClick} />}
                 </div>
 
               {menuOpen &&  
