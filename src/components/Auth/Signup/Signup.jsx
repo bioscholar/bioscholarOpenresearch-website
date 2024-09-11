@@ -127,7 +127,7 @@
 // export default Signup;
 
 'use client';
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import '@styles/Auth/Signup/Signup.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
@@ -136,6 +136,9 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import validator from 'email-validator';
 import { useRouter } from 'next/navigation';
+import { GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, fetchSignInMethodsForEmail, onAuthStateChanged } from "firebase/auth";
+import { ref, set } from 'firebase/database';
+import { auth, database } from '@firebase'; 
 
 const Signup = () => {
     const [email, setEmail] = useState('');
@@ -154,9 +157,23 @@ const Signup = () => {
 
     const router = useRouter();
 
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                router.push('/');
+            }
+        });
+        return () => unsubscribe();
+    }, [router]);
+
     const validateEmail = (value) => {
         if (!validator.validate(value)) {
             return "Please enter a valid email address.";
+        }
+
+         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailRegex.test(value)) {
+            return "Please enter a proper email address.";
         }
         return '';
     };
@@ -165,10 +182,12 @@ const Signup = () => {
         if (value.length < 8) {
             return "Password should be at least 8 characters long.";
         }
+
+       
         return '';
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setGeneralError('');
         setEmailError('');
@@ -182,13 +201,64 @@ const Signup = () => {
             setPasswordError(passwordErrorMessage);
             return;
         }
+        // const emailExists = await checkEmailExists(email);
+        // if (emailExists) {
+        //     setGeneralError('An account with this email already exists. Please log in.');
+        //     return;
+        // }
 
-        console.log("Form submitted:", { firstName, lastName, institution, city, state, country, email, password });
-        router.back();
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+
+            // Reference to the Firebase Realtime Database URL
+            const userRef = ref(database, `usersData/${user.uid}`);
+            await set(userRef, {
+              uid: user.uid,
+              email: user.email,
+              firstName,
+              lastName,
+              institution,
+              city,
+              state,
+              country,
+            });
+
+            console.log('User data saved successfully');
+            router.push('/');
+        } catch (error) {
+            if (error.code === 'auth/email-already-in-use') {
+                setGeneralError('An account with this email already exists. Please log in.');
+            } else {
+                setGeneralError('An error occurred. Please try again.');
+            }
+            console.error('Error during signup:', error);
+        }
     };
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
+    };
+
+    const handleGoogleSignIn = async () => {
+        try {
+            const provider = new GoogleAuthProvider();
+            const result = await signInWithPopup(auth, provider);
+            const user = result.user;
+
+            const userRef = ref(database, `usersData/${user.uid}`);
+            await set(userRef, {
+                uid: user.uid,
+                email: user.email,
+                firstName: user.email.split('@')[0],
+            });
+
+            console.log('Google Sign-In successful and user data stored:', user);
+            router.push('/');
+        } catch (error) {
+            setGeneralError('An error occurred. Please try again.');
+            console.error('Google Sign-In error:', error);
+        }
     };
 
     return (
@@ -295,7 +365,7 @@ const Signup = () => {
                         <button className="signup-btn" type="submit">Sign Up</button>
                     </div>
                     <div className="google-signin">
-                        <button type="button" className="Signin-with-google-btn">Signin with Google</button>
+                        <button type="button" className="Signin-with-google-btn"  onClick={handleGoogleSignIn}>Signin with Google</button>
                     </div>
                     <div className="signup-terms-content">
                         <p className="signup-terms">
