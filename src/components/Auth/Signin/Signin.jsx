@@ -46,7 +46,7 @@ const Signin = () => {
         setGeneralError(''); // Clear general error on change
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         setGeneralError('');
         setEmailError('');
@@ -65,6 +65,29 @@ const Signin = () => {
 
         if (!valid) {
             return;
+        }
+
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+
+            // Store user data in Firebase Realtime Database
+            const userRef = ref(database, 'usersData/' + user.uid);
+            await set(userRef, {
+                uid: user.uid,
+                email: user.email,
+                firstName: user.email.split('@')[0],
+            });
+        
+
+            // router.push('/');
+
+        } catch (error) {
+            if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+                setGeneralError("Email or password is incorrect. Please try again");
+            } else {
+                setGeneralError("An error occurred. Please try again.");
+            }
         }
 
         // You can handle further form submission logic here
