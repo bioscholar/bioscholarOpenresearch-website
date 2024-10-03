@@ -5,13 +5,15 @@
   --bio-purple-bg:#F1F2FF;
   --bio-white:#ffffff;
   --bio-black:#1d1d1d;
+  --art-h-font:'Calibri';
+  --art-p-font:'Times New Roman';
   --h-font:'Poppins';
   --p-font:'Lato';
   --h-black:#000000;
   --p-black:#0A0A0A;
   --h-white:#ffffff;
   --p-white:#d1d1d1;
-
+  --box-border:#e1e1e1;
 }
 
 *{

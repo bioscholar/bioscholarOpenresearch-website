@@ -1,80 +1,107 @@
 const ArticleData=[
+  
     {
         id:"1",
-        category:"Developmental Biology",
-        title:"Development and validation of an interprofessional collaborative educational module on the self-management of foot for individuals ",
+        articleType:"Research Article",
+        category:"Agriculture & Aquaculture",
+        title:"Evil and allies: Opportunistic gulls as both spreaders and sentinels of antibiotic-resistant bacteria in human-transformed landscapes ",
         date:"31 August 2024",
-        author:"Corwell John",
-        authors:"Rion Brattig CorreiaJoana M AlmeidaMargot J WyrwollIrene JulcaDaniel SobralChandra Shekhar MisraSara Di PersioLeonardo G GuilgurHans-Christian SchuppeNeide SilvaPedro PrudêncioAna NóvoaAna S LeocádioJoana BomSandra LaurentinoMoisés MalloSabine KlieschMarek MutwilLuis M RochaFrank Tüttelmann",
+        author:"Víctor Martín-Vélez, Tomás Montalvo, David Giralt, Francisco Ramírez, Joan Giménez, Clara Morral-Puigmal, Raquel Planell, Sara Sabate, Gerard Bota, Joan Navarro",
+        authors:"Víctor Martín-Vélez, Tomás Montalvo, David Giralt, Francisco Ramírez, Joan Giménez, Clara Morral-Puigmal, Raquel Planell, Sara Sabate, Gerard Bota, Joan Navarro",
         institutions:"Instituto Gulbenkian de Ciência; Oeiras, PortugalDepartment of Systems Science and Industrial Engineering, Binghamton University NY, USAEvoReproMed Lab, Environmental Health Institute (ISAMB), Associate Laboratory TERRA, Faculty of Medicine, University of Lisbon, PortugalCentre of Medical Genetics, Institute of Reproductive Genetics, University and University Hospital of Münster; Germany",
         version:"v2",
         releaseDate:"September 3, 2024",
+        articleTopNavigation:[
+            "Main text",
+            "Figures",
+            "Tables",
+            "Annexures & Article Metric",
+        ],
         mainArticle:[
             {
                 title:"Abstract",
-                description:"Male germ cells share a common origin across animal species, therefore they likely retain a conserved genetic program that defines their cellular identity. However, the unique evolutionary dynamics of male germ cells coupled with their widespread leaky transcription pose significant obstacles to the identification of the core spermatogenic program. ",
+                description:[
+                    "Human-transformed residuals, especially those derived from human waste (dumps), farmland, and livestock are involved in the emergence of antibiotic-resistant bacteria (ARB) in the environment. Wildlife can act as vectors of ARB dispersal through different environments, but also as sentinels to detect the early spread and determine ARB sources. The development of integrated monitoring programmes focused on wildlife would help to anticipate the risks of ARB to humans and livestock. We used the yellow-legged gull (Larus michahellis) as a model species to investigate and monitor the spatial patterns of ARB dispersal across an extensive farmland region located in northeastern Spain (Lleida). By integrating GPS tracking data and ARB clinical testing for 26 individuals within a network analysis framework, we modelled the risk of spatial pathogen spread through faeces during the bacteria-transmission latency period (16 days after sample collection). Additionally, we created a connectivity network to determine the main sources of ARB in the area, focusing on three main habitats of special risk for infection: dumps, livestock facilities, and irrigation ponds.",
+                    "Seven individuals were infected by Escherichia coli, with one also co-infected with Listeria monocytogenes and Salmonella spp. Potential pathogen dispersal distances ranged from 1.13 km to 23.13 km from the breeding colony. Our network analyses revealed 54 main nodes (i.e. high-risk habitats recurrently visited by tracked gulls) and 1182 links among them. Our findings revealed a high degree of connectivity between the breeding area, located in a shallow lake, and nearby dumps, highlighting them as significant contributors to ARB dispersal. Synthesis and applications: The integration of GPS data, pathogen testing and network analyses can shed further light on pathogen dynamics by creating spatial risk maps and identifying ARB sources. In combination with complementary molecular epidemiology techniques within a One Health framework, our approach can emerge as an important tool for monitoring ARB dynamics within highly human-transformed ecosystems. This may empower managers for the development of targeted ARB monitoring programmes and effective mitigation strategies, ultimately improving both animal and public health."
+                ]
 
             },
             {
-                title:"Main text",
-                description:"Understanding what defines the uniqueness of a given cell type out of the 843 predicted cellular fates in the human body is a complex and fascinating problem1. Through Conrad Waddington’s foundational work, we have come to appreciate that developmental trajectories ultimately dictate cell type identity via the establishment of specific transcriptional programs2. ",
+                title:"Introduction",
+                description:[
+                    "Antimicrobials play a pivotal role in preventing and treating diseases in humans, as well as domestic and livestock animals. However, the excessive utilisation of antimicrobial agents, coupled with environmental pollution arising from antibiotic residues, poses a substantial global threat to humans, as bacteria can become resistant to certain antimicrobials (Ferri et al., 2017; He et al., 2020).",
+                    "Antimicrobial resistance is defined as the inability or reduced ability of an antimicrobial agent to inhibit bacterial growth, which, in the case of a pathogenic organism, can lead to therapy failure. In fact, the prevalence of antibiotic-resistant bacteria (ARB) in the environment is considered a major global health challenge that has impaired our capacity to treat infections, leading to an increase in health treatment costs (Hernando-Amado et al., 2019; Murray et al., 2022). At the same time, ARB has played a critical role in agriculture and farming through health impacts on food production and domestic livestock, with significant economic repercussions (Vittecoq et al., 2016; World Health Organization, 2021). Unfortunately, understanding the dynamics of ARB dispersal in the environment is challenging due to the wide range of ARB mechanisms and the horizontal transfer of resistant genes between different bacteria (Vittecoq et al., 2016). Programmes, frameworks, and strategies designed to effectively monitor ARB dynamics and assess their potential risks to wildlife and human health and interests are therefore essential within a One Health framework.",
+                    "Antibiotic-resistant bacteria are mainly generated in environments that present high levels of antibiotic residues, biocides or pollutants, often associated with waste management installations such as landfills or water treatment plants (Wu et al., 2017). Residuals derived from food-producing environments (e.g. fertilisers, effluents, untreated irrigation water) are involved in the emergence of ARB due to the presence of high levels of antibiotics (Iwu et al., 2020; Lopes et al., 2022). However, the role of farmland environments in the emergence, selection, and circulation of ARB has received less attention compared with other humanised ecosystems, such as cities, landfills, or wastewater treatment plants (Iwu et al., 2020; Koutsoumanis et al., 2021; Martín-Vélez, Navarro, et al., 2024). In farmland, ARB dispersal can be enhanced by the transmission of pathogens from wildlife to domestic animals and vice versa (Hayek, 2022; Kilpatrick et al., 2009).",
+                    "Wildlife species adapted to exploit anthropogenic resources are more likely to harbour ARB. This makes them potential vectors for the dispersal of ARB in the environment, affecting both humans and livestock (Martín-Vélez, Navarro, et al., 2024; Vittecoq et al., 2016). Dispersal within farmland and livestock environments can occur through faecal deposition in surface irrigation waters (Moré et al., 2017; Reed et al., 2003) or inside livestock installations (Lee et al., 2022). Nonetheless, aside from being commonly considered ‘evil’, the wildlife involved in the dispersal of ARB can also be regarded as ‘allies’ since they can complement ongoing ARB surveillance programmes (focused on monitoring ground and surface water, residues, and fertilised soils that can be sources of ARB; Koutsoumanis et al., 2021), and can be used as sentinels of ARB exposure (Martín-Maldonado et al., 2022). Identifying pathogen dynamics using wildlife as sentinel species may provide early warning signals to assess and anticipate the risks of ARB to humans, livestock, and crops (Furness et al., 2017; Martín-Vélez, Navarro, et al., 2024). Ultimately, this approach would facilitate the development of recommendations to mitigate the risk of dissemination, with a particular focus on identifying spread routes that have gained priority in public health monitoring schemes (Koutsoumanis et al., 2021).",
+                    "Among wildlife inhabiting human-modified environments, opportunistic gulls could serve as both evils and allies to advise and monitor, respectively, the circulation of ARB in the environment. Gulls are adapted to exploit a high diversity of food resources present in landfills, water treatment plants, farmland, and livestock areas, often being exposed to the same bacteria and antibiotic residuals as humans (Zhang et al., 2015). As a consequence, most of these seabirds have high rates of antibiotic-resistant pathogens such as Escherichia coli, Campylobacter jejuni, or Listeria monocytogenes, among others (Bonnedahl et al., 2009; Stedt et al., 2014; Martín-Vélez, Navarro, et al., 2024; Navarro et al., 2019; Vergara et al., 2017). Although the sources and prevalence of ARB are well studied in gulls (Zeballos-Gross et al., 2021), the pathways of ARB spread in the environment, their role as early sentinels and their spatial patterns while infected are comparatively less known (Swift et al., 2019). To establish the role of opportunistic gulls as both sentinels and vectors of ARB, comprehensive epidemiological and mobility analyses are needed. These analyses will help to determine the origin of ARB carried by gulls, assessing whether they pose a risk to humanised environments (Martín-Vélez, Navarro, et al., 2024; Plaza-Rodríguez et al., 2021), and to select habitats most at risk that can be further studied in detail for surveillance programmes.",
+                    "In this study, we fill this gap of knowledge by integrating the recently developed bio-logging technology, such as miniaturised GPS tracking devices that send information in near-real time, within spatial and network analyses, as a means for studying animal movements and connectivity, and their potential implications in ARB dynamics in highly modified agricultural landscape. Bio-logging has emerged as a powerful tool for tracking animal movements with unprecedented spatial and temporal resolution (McDuie et al., 2022; Nathan et al., 2022). Complementary, network analysis plays a crucial role in quantifying connectivity between habitats (Bastille-Rousseau et al., 2018) and can be applied within pathogen epidemiology to determine sources (e.g. dumps, irrigation ponds, livestock facilities in our case) and sinks (e.g. natural areas) of ARB in the environment (Saucedo & Tien, 2022).",
+                    "Given their high mobility across diverse habitats and frequent interactions with sources of ARB (Martín-Vélez, Navarro, et al., 2024), we selected yellow-legged gulls (Larus michahellis) as a model species to exemplify how this opportunistic species can be used as both a sentinel and vector species of ARB in agriculture landscapes. In particular, we combined GPS tracking information, network analyses, and ARB diagnosis for a yellow-legged gull population inhabiting an extensive agricultural and populated area in northeastern Spain (Lleida). This novel integrated approach can be an important tool to monitor ARB dynamics in the environment using gulls at the individual level (Arnold et al., 2016). Specifically, we aim to (1) identify the main pathogenic bacteria transmitted by yellow-legged gulls, (2) determine the role of gulls as sentinels through network analysis, and (3) assess the sensitive habitats with the highest risk of potential ARB transmission. Given the utilisation of interconnected habitats and resources identified as sources of ARB, we predict the presence of yellow-legged gulls infected by ARB. Owing to their high and diverse spatial mobility, we also predict that ARB-infected yellow-legged individual gulls contribute to ARB transmission through the recurrent use of sensitive habitats.",
+                ],
+            },
+            {
+                title:"Materials and methods",
                 subArticle:[
                     {
-                        title:"A more conservative estimate of the complexity of the male germ cell transcriptome",
+                        title:"Fieldwork procedures",
                         description:[
-                            "Male germ cell development is divided into three conserved stages21. The first is the pre-meiotic stage and corresponds to the mitotic expansion of committed precursors (spermatogonia). Meiosis defines the second stage, with the newly differentiated spermatocytes undergoing reductive division. ",
-                            "To understand to what extent male germ cell transcription quantitatively differs from that of somatic lineages, we collected previously published high-quality RNA-Seq datasets from pre- meiotic, meiotic and post-meiotic germ cell populations, and compared them with representative somatic cell types of the primary embryonic layers: neurons (ectoderm), muscle (mesoderm) and enterocytes (endoderm; Fig. 1b and Sup. Table 1). ",
+                            "The study was conducted at Ivars i Vila-sana shallow lake (Catalonia, northeastern Spain, Figure 1a), a Natura 2000 site (ES5130018), that hosts a yellow-legged gull breeding colony of about 30–40 pairs. Ivars shallow lake is surrounded by farmland habitats, including both irrigated and dryland herbaceous crops and orchards, small and medium-sized towns, dozens of small irrigation ponds, a high density of livestock farms (Díez De Los Ríos et al., 2021), and small garbage dumps. During the incubation period (April) of 2022, 2023, and 2024, we captured 26 (six in 2022, 15 in 2023, and 5 in 2024) breeding adults (more than 4 years old) at the nest using a walk-in wire mesh trap. All fieldwork was approved by the Ethics Committee of CSIC, in accordance with Spanish and EU legislation on the protection of animals used for scientific purposes (reference numbers: 410910008014, SF0151/22).",
+                            "",
+                            "Upon capture, we kept each yellow-legged gull in an individual box (never used before) and then collected faeces from the floor of the box with two sterile swabs after 10 min. Faecal samples were stored in Cary-Blair transport medium at 2–8°C and analysed within 24 h at the laboratories of the Agència de Salut Pública de Barcelona (ASPB). We tagged all sampled yellow-legged gulls with GPS devices (OrniTtrack-15 solar-powered GPS-GSM/GPRS tracker, Ornitela, Lithuania) which recorded their position at 5-min intervals outside the breeding colony and every 30 min when individuals were in the colony. We fitted the GPS devices to each of the 26 yellow-legged gulls using a wing Teflon ribbon harness fixed with a reef knot in the tracheal pit, an attachment method used with large gulls (see Thaxter et al., 2014). GPS devices and harnesses weighed less than 1.8% of the body mass of the birds (20 g for the GPS device versus 1046 ± 122 g [mean ± SD] for the tracked gulls), less than the 3% threshold suggested to have a negative effect on seabirds (Passos et al., 2010; Phillips et al., 2003). During handling, we covered the head of each gull with a hood to reduce stress. All fieldwork was approved by the Ethics Committee of CSIC (REF: 28-04-15-237) and the Catalonia Government (REF: AC/059-23, SF/0068/23) in accordance with Spanish and EU legislation on the protection of animals used for scientific purposes."                        ]
+                    },
+                    {
+                        title:"Pathogen detection and antibiotic susceptibility testing",
+                        description:[
+                            "All 26 swab-sampled gulls were tested for the presence of extended-spectrum beta-lactamase- (ESBL), AmpC- and carbapenemase-producing E. coli strains, Campylobacter spp., Salmonella spp., pathogenic Yersinia enterocolitica and Listeria monocytogenes. Subsequently, we classified each individual as either infected or not infected according to whether or not, respectively, the presence of any pathogen was detected. We further analysed the ESBL-producing E. coli and Salmonella spp. strains in order to establish whether the strains were susceptible or resistant to the antimicrobials tested. E. coli strains were obtained on CHROMID® CARBA SMART agar plates (bioMérieux Industries, Marcy l'Etoile, France). As stated in Decision 2020/1729/EU, to determine if ESBL-, AmpC- and/or carbapenemase-producing E. coli have been isolated, minimum inhibitory concentration (MIC) determinations with different antimicrobials are required. According to the WHO (2024), the types of highest priority critically important antimicrobials in Spain are cephalosporins (3rd, 4th generation), quinolones, polymyxins, and phosphonic acid derivatives. If resistance to cefotaxime, ceftazidime, or meropenem is observed using EUVSEC3 plates (Sensititre, Thermo Fisher Diagnostic, Vantaa, Finland), MIC determination of antimicrobials using EUVSEC2 plates (Sensititre, Thermo Fisher Diagnostic, Vantaa, Finland) has to be conducted. All E. coli strains found in this study were resistant to cefotaxime and ceftazidime, and therefore MIC for the antimicrobials were determined using both EUVSEC3 and EUVSEC2 plates (Sensititre, Thermo Fisher Diagnostic, Vantaa, Finland). See Supporting Information for further details."
                         ]
                     },
                     {
-                        title:"The male germ cell transcriptome has an old evolutionary origin",
+                        title:"GPS analysis",
                         description:[
-                            "Male germ cell development is divided into three conserved stages21. The first is the pre-meiotic stage and corresponds to the mitotic expansion of committed precursors (spermatogonia). Meiosis defines the second stage, with the newly differentiated spermatocytes undergoing reductive division. ",
-                            "To understand to what extent male germ cell transcription quantitatively differs from that of somatic lineages, we collected previously published high-quality RNA-Seq datasets from pre- meiotic, meiotic and post-meiotic germ cell populations, and compared them with representative somatic cell types of the primary embryonic layers: neurons (ectoderm), muscle (mesoderm) and enterocytes (endoderm; Fig. 1b and Sup. Table 1). ",
+                            "In addition to the parameters extracted directly from the GPS devices (date, time, latitude, longitude, and instantaneous speed), we also calculated additional variables from consecutive GPS positions (Harversine distance – spherical distance between geographic coordinates of GPS fixes), backward time difference between GPS positions and trajectory speed (km·h−1). The accumulated distance per individual during their foraging trips beyond the breeding area was also estimated (Table S1). We considered a foraging trip as the time from when an individual left the perimeter of the breeding area (i.e. the shallow lake) until it returned for incubating. We delimited the perimeter of the lake by overlapping the GPS database with the corresponding polygon of Ivars shallow lake from SIOSE land use 2014 (Instituto Geográfico Nacional, 2014)."
+                        ]
+                    },
+                    {
+                        title:"ARB connectivity network analyses",
+                        description:[
+                            "To determine the nodes of the ARB connectivity network, we first identified the specific locations that the 26 tagged yellow-legged gulls actively used (speed data less than 10 km·h−1; López-Calderón et al., 2023; Martín-Vélez et al., 2020) outside of the lake with relevance to ARB spread (livestock farms, dumps, and to lesser extent, irrigation ponds). In total, 54 sites that met our criteria were identified (Table 1). The centroid of each site was determined using Google Earth under visual inspection and a buffer of 200 metres was applied to create polygons that correspond to nodes in the connectivity network. Once the nodes were identified, we created the links by filtering the trajectories in the GPS dataset, beginning in the first node with speed <10 km·h−1 and ending in a different node with speed <10 km·h−1. Therefore, we defined a directed network weighted by the total number of trajectories in each link between nodes."
+                        ]
+                    },
+                    {
+                        title:" Pathogen risk map",
+                        description:[
+                            "To model the spatial spread risk maps, we selected GPS points from all infected yellow-legged gulls up to 16 days after sample collection (Table S1), as this is the time range that a gull can still spread high concentrations of ARB through their faeces (Franklin et al., 2020; Martín-Vélez, Navarro, et al., 2024). We then established a defecation rate of once per 3.1 h (± 1 h) based on previous studies with gulls (Portnoy, 1990) and calculated the dispersal distance (Haversine distance) from the release point (t0) of the individual to the GPS position (t1) occupied 3.1 h later, according to the estimated excretion rate of 1 defecation every 3.1 h (Table S1). To test for sensitivity in defecation rate while calculating dispersal distances, we calculated dispersal distances for individuals with a defecation rate ±1 h over the mean estimate used (range 2.1–4.1 h), as this represents the standard deviation reported in previous literature (Portnoy, 1990). Finally, we generated a spatially explicit spread risk map for the breeding gulls that were infected based on kernel density maps in QGIS 3.26.1 (in UTM coordinates to calculate densities in points per km2) (Figure 1b). We considered a 10-m pixel resolution and a neighbouring area of 300 m (as the mean dispersal distance between two consecutive points of tagged gulls was 330 m according to our GPS data). We extracted the contours from the generated kernels and overlapped them with sensitive habitats (irrigation ponds, livestock facilities, industrial urban areas) based on SIOSE 2014 classification and then assigned a score for habitat contribution based on the raw values of the density kernel. To construct density kernel maps, we did not account for spatial autocorrelation to minimise the extent of the area generated by the kernel function (Fleming et al., 2015). We also generated contours (same procedure as above) for all GPS data points from the infected individuals to determine the potential area for pathogen spread."
                         ]
                     },
                 ]
             },
             {
-                title:"Discussion",
+                title:"Results",
+                subArticle:[
+                    {
+                        title:"Antibiotic-resistant bacteria detected",
+                        description:"The results obtained showed that cefotaxime, ampicillin, cefepime, and ceftazidime were the most common types of antimicrobial resistance detected (detection in all infected individuals; 6/6), followed by ciprofloxacin (5/6), nalidixic acid (4/6), tetracycline (4/6), trimethoprim (4/6), sulfamethoxazole (4/6), chloramphenicol (2/6), azithromycin (1/6) and ertapenem (1/6) (Table 2). All isolated strains were susceptible to cefoxitin, colistin, tigecycline, amikacin, meropenem, gentamicin, imipenem, and temocillin and are considered multidrug-resistant strains as they were resistant to three or more different classes of antimicrobials. The six strains isolated showed different antimicrobial susceptibility (Table 2). Considering all results obtained, for all strains the phenotype was compatible with ESBL-producing E. coli. Pathogenic Yersinia enterocolitica was not detected, and only one yellow-legged gull was simultaneously infected by E. coli, Salmonella infantis, and Listeria monocytogenes. The Salmonella spp. strain was further assessed for its resistance profile, and it was found to be resistant to nalidixic acid, ciprofloxacin, tetracycline, and tigecycline, while it was susceptible to the rest of the antimicrobials tested."
+                    },
+                    {
+                        title:"ARB connectivity network",
+                        description:[
+                            "The spatial network derived from the movement of GPS-tracked gulls included 54 nodes (4 dumps, 38 ponds, and 12 livestock farms; Table 1), representing potential ARB sources (and one main node which was the breeding colony), and 1182 trajectories distributed across 147 unique links or “edges” (Table S1). Infected individuals visited 15 of the nodes during the time of infection (Figure 2). At the network level, diameter was 29 and density was 0.05. At the node level, Ivars shallow lake had the greatest values of betweenness and degree (2746 and 88, respectively; Table 1), followed by node 3 (dump) and nodes 9 and 14 (two irrigation ponds). At the habitat level, Ivars shallow lake was highly connected with dumps (Figure 3).",
+                            "",
+                            "Spatial connectivity of yellow-legged gull trajectories between ARB sources (dumps, irrigation ponds, and livestock farms in different colours) and Ivars shallow lake, based on GPS tracking data from 26 tagged individuals in 2022, 2023, and 2024 during the 16-day shedding time of ARB. Line width and colour of the arrows reflect the strength of the links in terms of number of trajectories (see Table S1 for full details). Nodes used by infected individuals are highlighted in purple."
+                        ]
+                    },
+                ]
+            },
+            {
+                title:"Discussions",
                 description:[
-                    "In summary, we have identified a conserved male germ cell gene expression program, spanning more than 600 million years of evolution, that can provide clinical insight into the molecular basis of human infertility. We estimate the average functional requirement of a metazoan male germ cell to correspond to the expression of approximately 10,000 protein-coding genes, the majority of which are deeply conserved.",
+                    "Our study reveals the ability of yellow-legged gulls to carry and spread ARB in highly human-transformed environments such as agricultural landscapes. Gulls acted as vectors of ARB as they showed a high prevalence of antibiotic-resistant strains of E. coli and connected various anthropogenic sources of ARB (especially dumps) throughout the environment. Gulls also emerged as effective sentinels of ARB circulation in the environment. The prompt detection of ARB infection in gulls can serve as an early warning signal for managers, enabling them to activate proactive measures and implement corrective actions to prevent the spread of ARB in the environment. This can be achieved through the development of integrated surveillance programmes that identify and address early sources of ARB. Understanding individual movement patterns becomes crucial when examining the spatial distribution of pathogen spread, and these methods can be extended to other systems.",
                     "Indeed, despite the testis being a rapidly evolving organ and frequent birthplace of genetic novelty, deeply conserved genes are central components of the male germ cell transcriptome, with younger genes being preferentially expressed in late spermatogenesis. ",
                 ]
             },
 
         ]
     },
-    {
-        id:"2",
-        title:"Development and validation of an interprofessional collaborative educational module on the self-management of foot for individuals ",
-        date:"31 August 2024",
-        author:"Corwell John",
-    },
-    {
-        id:"3",
-        title:"Development and validation of an interprofessional collaborative educational module on the self-management of foot for individuals ",
-        date:"31 August 2024",
-        author:"Corwell John",
-    },
-    {
-        id:"4",
-        title:"Development and validation of an interprofessional collaborative educational module on the self-management of foot for individuals ",
-        date:"31 August 2024",
-        author:"Corwell John",
-    },
-    {
-        id:"5",
-        title:"Development and validation of an interprofessional collaborative educational module on the self-management of foot for individuals ",
-        date:"31 August 2024",
-        author:"Corwell John",
-    },
-    {
-        id:"6",
-        title:"Development and validation of an interprofessional collaborative educational module on the self-management of foot for individuals ",
-        date:"31 August 2024",
-        author:"Corwell John",
-    },
+   
 ]
 
 export default ArticleData;

@@ -11,18 +11,53 @@ export const Footer = () => {
   return (
     <div className='footer'>
         <div className='footer-container'>
-            <div className='footer-contents'>
-                <p>Terms of Service</p>
-                <p>Privacy Policy</p>
-                <p>Cookie Policy</p>
-                <p>Refund Policy</p>
-            </div>
-            <div className='footer-socials'>
-                <Image src={Facebook}/>
-                <Image src={X}/>
-                <Image src={Instagram}/>
-                <Image src={Linkedin}/>
-            </div>
+          <div className='footer-contents-container'>
+
+              <div className='footer-contents'>
+                  <p>About </p>
+                  <p>Privacy notice</p>
+                  <p>Monthly archive</p>
+                  <p>Press Release </p>
+              </div>
+              <div className='footer-contents'>
+                  <p>Terms and Conditions</p>
+                  <p>careers </p>
+                  <p>Our Partners </p>
+                  <p>Alerts </p>
+              </div>
+              <div className='footer-contents'>
+                  <p>Contact</p>
+                  <p>Sign up for mail alerts </p>
+                  <p>Services </p>
+                  <p>R&D and L&D</p>
+              </div>
+              <div className='footer-contents'>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                  {/* <div className='footer-socials'>
+                    <Image src={Facebook}/>
+                    <Image src={X}/>
+                    <Image src={Instagram}/>
+                    <Image src={Linkedin}/>
+                  </div>
+                  <div className='footer-copyright'>
+                    <span>© 2024 Bioscholar Pvt Ltd.</span>
+              </div> */}
+              </div>
+          </div>
+
+         <div className='sample'>
+         <div className='footer-socials'>
+          {/* <p>Follow us</p> */}
+                    <Image src={Facebook}/>
+                    <Image src={X}/>
+                    <Image src={Instagram}/>
+                    <Image src={Linkedin}/>
+                  </div>
+                  <div className='footer-copyright'>
+                    <span>© 2024 Bioscholar Pvt Ltd.</span>
+              </div>
+         </div>
+
         </div>
     </div>
   )

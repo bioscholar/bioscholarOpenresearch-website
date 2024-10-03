@@ -1,6 +1,7 @@
 import React from 'react'
 import ArticleData from '@data/article/ArticleData';
 import Article from '@components/Article/Article';
+import '@styles/Article/Article.css'
 const page = ({params}) => {
     const {slug} = params;
 

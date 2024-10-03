@@ -25,7 +25,7 @@
 
 // export { auth, database, storage };
 
-import { initializeApp, getApps } from 'firebase/app';
+import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getDatabase } from 'firebase/database'; // Use getDatabase for Realtime Database
 import { getStorage } from 'firebase/storage';
@@ -42,7 +42,7 @@ const firebaseConfig = {
 };
 
 // Check if Firebase app is already initialized
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApps()[0];
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 
 // Initialize Firebase services
 const auth = getAuth(app);
@@ -50,3 +50,4 @@ const database = getDatabase(app); // For Realtime Database
 const storage = getStorage(app);
 
 export { auth, database, storage };
+

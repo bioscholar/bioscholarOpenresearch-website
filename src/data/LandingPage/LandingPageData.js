@@ -1,3 +1,4 @@
+import journal from '@public/images/landing/editor/journal.png'
 const LandingPageData=[
     {
         title:"Development and validation of an interprofessional collaborative educational module on the self-management of foot for individuals ",
@@ -58,4 +59,31 @@ const LandingAccordionData=[
     },
 ]
 
-export  {LandingPageData, LandingAccordionData};
+const LandingEditorData=[
+    {
+        image:journal,
+        title:"eLife Global South Committee for Open Science",
+        para:"The committee is looking to recruit new members based in the Caribbean, Indian subcontinent, Latin America and Pacific Islands.",
+        author:"Rion Brattig Correia, Joana M Almeida, Paulo Navarro-Costa"
+    },
+    {
+        image:journal,
+        title:"eLife Global South Committee for Open Science",
+        para:"The committee is looking to recruit new members based in the Caribbean, Indian subcontinent, Latin America and Pacific Islands.",
+        author:"Rion Brattig Correia, Joana M Almeida, Paulo Navarro-Costa"
+    },
+    {
+        image:journal,
+        title:"eLife Global South Committee for Open Science",
+        para:"The committee is looking to recruit new members based in the Caribbean, Indian subcontinent, Latin America and Pacific Islands.",
+        author:"Rion Brattig Correia, Joana M Almeida, Paulo Navarro-Costa"
+    },
+    {
+        image:journal,
+        title:"eLife Global South Committee for Open Science",
+        para:"The committee is looking to recruit new members based in the Caribbean, Indian subcontinent, Latin America and Pacific Islands.",
+        author:"Rion Brattig Correia, Joana M Almeida, Paulo Navarro-Costa"
+    },
+]
+
+export  {LandingPageData, LandingAccordionData, LandingEditorData};
