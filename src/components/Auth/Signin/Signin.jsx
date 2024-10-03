@@ -46,33 +46,53 @@ const Signin = () => {
         setGeneralError(''); // Clear general error on change
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setGeneralError('');
         setEmailError('');
         setPasswordError('');
         let valid = true;
-
+    
         if (!email || !validateEmail(email)) {
             setEmailError('Invalid email address');
             valid = false;
         }
-
+    
         if (!password) {
             setPasswordError('Password is required');
             valid = false;
         }
-
+    
         if (!valid) {
             return;
         }
-
-        // You can handle further form submission logic here
-        console.log("Form submitted:", { email, password });
-
-        // Example navigation after form submission
-        router.push('/');
+    
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+    
+            // Store user data in Firebase Realtime Database
+            const userRef = ref(database, 'usersData/' + user.uid);
+            await set(userRef, {
+                uid: user.uid,
+                email: user.email,
+                firstName: user.email.split('@')[0],
+            });
+    
+            document.cookie = `authToken=${userCredential.user.uid}; path=/; domain=.trafyai.com`;
+            document.cookie = `authToken=${userCredential.user.uid}; path=/; domain=.blog.trafyai.com`;
+    
+            router.push('/');
+        } catch (error) {
+            if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+                setGeneralError("Email or password is incorrect. Please try again");
+            } else {
+                setGeneralError("An error occurred. Please try again.");
+            }
+        }
     };
+    
+
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
