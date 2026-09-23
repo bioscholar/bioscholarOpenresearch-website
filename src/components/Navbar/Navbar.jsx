@@ -168,6 +168,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {useRouter} from 'next/navigation';
 import { UserAuth } from '@context/AuthContext';
+import { SUBMIT_RESEARCH_PATH } from '@data/submitResearch';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -247,7 +248,9 @@ const Navbar = () => {
           </div>
 
           <div className="navbar-right">
-            <button className="navbar-top-button">SUBMIT YOUR RESEARCH</button>
+            <Link href={SUBMIT_RESEARCH_PATH}>
+              <button className="navbar-top-button">SUBMIT YOUR RESEARCH</button>
+            </Link>
             <Image src={search} className="mobile-search-btn" onClick={handleSearchButtonClick} />
 
             <div className="navbar-profile">

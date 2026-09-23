@@ -1,0 +1,216 @@
+.submit-research{
+    width: 100%;
+    min-height: 70vh;
+    padding: 80px 16px;
+    background-color: var(--bio-purple-bg);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.submit-research-card{
+    width: 100%;
+    max-width: 620px;
+    padding: 40px;
+    border: 1px solid var(--box-border);
+    border-radius: 12px;
+    background-color: var(--bio-white);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Step indicator */
+.submit-research-steps{
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+}
+.submit-research-steps li{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-bottom: 12px;
+    border-bottom: 3px solid var(--box-border);
+    color: #8a8a8a;
+}
+.submit-research-steps li span{
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 1px solid currentColor;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--h-font);
+    font-size: 13px;
+}
+.submit-research-steps li p{
+    font-family: var(--p-font);
+    font-size: 14px;
+}
+.submit-research-steps li.active{
+    color: var(--bio-cta);
+    border-bottom-color: var(--bio-cta);
+}
+.submit-research-steps li.done{
+    color: var(--bio-black);
+    border-bottom-color: var(--bio-black);
+}
+.submit-research-steps li.done span{
+    background-color: var(--bio-black);
+    color: var(--bio-white);
+}
+
+/* Heading */
+.submit-research-heading{
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+.submit-research-eyebrow{
+    font-family: var(--h-font);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--bio-cta);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.submit-research-heading h1,
+.submit-research-done h1{
+    font-family: var(--h-font);
+    font-weight: 600;
+    font-size: 28px;
+    color: var(--h-black);
+}
+.submit-research-heading p:not(.submit-research-eyebrow),
+.submit-research-done p{
+    font-family: var(--p-font);
+    font-size: 16px;
+    color: #4a4a4a;
+}
+
+/* Fields */
+.submit-research-form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+}
+.submit-research-field{
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+.submit-research-field label{
+    font-family: var(--h-font);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--p-black);
+}
+.submit-research-field .required{
+    color: #d32f2f;
+}
+.submit-research-field .optional{
+    font-weight: 400;
+    color: #8a8a8a;
+}
+.submit-research-field input,
+.submit-research-field textarea{
+    width: 100%;
+    padding: 13px 16px;
+    border: 1px solid #c1bfbf;
+    border-radius: 8px;
+    font-family: var(--p-font);
+    font-size: 16px;
+    color: var(--p-black);
+    background-color: var(--bio-white);
+    resize: vertical;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+}
+.submit-research-field input:focus,
+.submit-research-field textarea:focus{
+    border-color: var(--bio-cta);
+    box-shadow: 0 0 0 3px rgba(126, 102, 244, 0.15);
+}
+.submit-research-field [aria-invalid="true"]{
+    border-color: #d32f2f;
+}
+.submit-research .error-message{
+    font-family: var(--p-font);
+    color: #d32f2f;
+    font-size: 13px;
+}
+
+/* Buttons */
+.submit-research-actions{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 0.5rem;
+}
+.submit-research-btn{
+    padding: 11px 32px;
+    border: 1px solid var(--bio-black);
+    border-radius: 8px;
+    background-color: var(--bio-white);
+    color: var(--bio-black);
+    font-family: var(--h-font);
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color .2s, color .2s;
+}
+.submit-research-btn:hover{
+    background-color: var(--bio-purple-bg);
+}
+.submit-research-btn-primary{
+    background-color: var(--bio-black);
+    color: var(--bio-white);
+}
+.submit-research-btn-primary:hover{
+    background-color: var(--bio-white);
+    color: var(--bio-black);
+}
+.submit-research-btn:disabled{
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Thank you */
+.submit-research-done{
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+.submit-research-check{
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: var(--bio-cta);
+    color: var(--bio-white);
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.submit-research-done .submit-research-btn{
+    margin-top: 1rem;
+}
+
+@media only screen and (max-width:600px){
+    .submit-research{
+        padding: 40px 16px;
+    }
+    .submit-research-card{
+        padding: 28px 20px;
+    }
+    .submit-research-steps li p{
+        display: none;
+    }
+    .submit-research-heading h1,
+    .submit-research-done h1{
+        font-size: 24px;
+    }
+}
